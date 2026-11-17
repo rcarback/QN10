@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="460" viewBox="0 0 720 460" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+<rect width="720" height="460" fill="white"/>
+<text x="70" y="34" font-size="20" font-weight="700" fill="#1b1f27">GPU board power (watts)</text>
+<line x1="70" y1="364.0" x2="696" y2="364.0" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="368.0" font-size="12" text-anchor="end" fill="#9aa3b2">0</text>
+<line x1="70" y1="305.2" x2="696" y2="305.2" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="309.2" font-size="12" text-anchor="end" fill="#9aa3b2">130</text>
+<line x1="70" y1="246.4" x2="696" y2="246.4" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="250.4" font-size="12" text-anchor="end" fill="#9aa3b2">260</text>
+<line x1="70" y1="187.6" x2="696" y2="187.6" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="191.6" font-size="12" text-anchor="end" fill="#9aa3b2">390</text>
+<line x1="70" y1="128.8" x2="696" y2="128.8" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="132.8" font-size="12" text-anchor="end" fill="#9aa3b2">520</text>
+<line x1="70" y1="70.0" x2="696" y2="70.0" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="74.0" font-size="12" text-anchor="end" fill="#9aa3b2">650</text>
+<text x="18" y="217" font-size="12" fill="#9aa3b2" transform="rotate(-90 18 217)" text-anchor="middle">watts (TDP / SoC)</text>
+<rect x="134.3" y="341.4" width="80.0" height="22.6" rx="3" fill="#2f8f83"/>
+<text x="174.3" y="335.4" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">50</text>
+<text x="174.3" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">QN10 SoC</text>
+<rect x="343.0" y="205.7" width="80.0" height="158.3" rx="3" fill="#8a94a6"/>
+<text x="383.0" y="199.7" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">350</text>
+<text x="383.0" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">RTX 3090</text>
+<rect x="551.7" y="103.9" width="80.0" height="260.1" rx="3" fill="#8a94a6"/>
+<text x="591.7" y="97.9" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">575</text>
+<text x="591.7" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">RTX 5090</text>
+<line x1="70" y1="364" x2="696" y2="364" stroke="#9aa3b2" stroke-width="1.5"/>
+<text x="70" y="410" font-size="11" fill="#1b1f27">The discrete GPU alone draws 7-11x the entire QN10&#x27;s power.</text>
+<text x="70" y="426" font-size="10.5" fill="#9aa3b2">RTX TDP: club386. QN10 figure is the whole system-on-chip envelope, not the GPU alone.</text>
+</svg>

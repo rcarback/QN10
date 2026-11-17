@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="460" viewBox="0 0 720 460" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+<rect width="720" height="460" fill="white"/>
+<text x="70" y="34" font-size="20" font-weight="700" fill="#1b1f27">NPU / tensor: INT8 TOPS (dense)</text>
+<line x1="70" y1="364.0" x2="696" y2="364.0" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="368.0" font-size="12" text-anchor="end" fill="#9aa3b2">0</text>
+<line x1="70" y1="305.2" x2="696" y2="305.2" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="309.2" font-size="12" text-anchor="end" fill="#9aa3b2">190</text>
+<line x1="70" y1="246.4" x2="696" y2="246.4" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="250.4" font-size="12" text-anchor="end" fill="#9aa3b2">380</text>
+<line x1="70" y1="187.6" x2="696" y2="187.6" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="191.6" font-size="12" text-anchor="end" fill="#9aa3b2">570</text>
+<line x1="70" y1="128.8" x2="696" y2="128.8" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="132.8" font-size="12" text-anchor="end" fill="#9aa3b2">760</text>
+<line x1="70" y1="70.0" x2="696" y2="70.0" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="74.0" font-size="12" text-anchor="end" fill="#9aa3b2">950</text>
+<text x="18" y="217" font-size="12" fill="#9aa3b2" transform="rotate(-90 18 217)" text-anchor="middle">TOPS (INT8, dense)</text>
+<rect x="134.3" y="339.2" width="80.0" height="24.8" rx="3" fill="#2f8f83"/>
+<text x="174.3" y="333.2" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">80</text>
+<text x="174.3" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">QN10 Hexagon NPU</text>
+<rect x="343.0" y="276.1" width="80.0" height="87.9" rx="3" fill="#8a94a6"/>
+<text x="383.0" y="270.1" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">284</text>
+<text x="383.0" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">RTX 3090 tensor</text>
+<rect x="551.7" y="104.7" width="80.0" height="259.3" rx="3" fill="#8a94a6"/>
+<text x="591.7" y="98.7" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">838</text>
+<text x="591.7" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">RTX 5090 tensor</text>
+<line x1="70" y1="364" x2="696" y2="364" stroke="#9aa3b2" stroke-width="1.5"/>
+<text x="70" y="410" font-size="11" fill="#1b1f27">Same axis, very different power: the NPU is part of a ~15-50 W SoC; the RTX cards draw 350-575 W.</text>
+<text x="70" y="426" font-size="10.5" fill="#9aa3b2">NPU: Qualcomm spec (80 TOPS). RTX: club386 / bestgpusforai.</text>
+</svg>

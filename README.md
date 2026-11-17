@@ -46,6 +46,69 @@ Verified on the running system, kernel qcom-next 7.4-rc1 with the patches in
 | USB (KVM, storage) | Works at USB 2 on the internal hub |
 | Suspend / resume (s2idle) | Works; see the power-key note |
 
+## How the QN10 compares
+
+Full methodology and the measured Linux numbers are in
+[BENCHMARKS.md](BENCHMARKS.md). The charts below use published reviewer and
+vendor figures for the comparison parts, cited there.
+
+### CPU
+
+![CPU: Geekbench 6 single and multi-core](images/cpu-geekbench.png)
+
+| CPU | Geekbench 6 single | Geekbench 6 multi |
+|-----|-------------------:|------------------:|
+| Snapdragon X2 Elite Extreme (QN10 family) | ~4,080 | ~23,400 |
+| Apple M4 Max (16-core) | ~3,900 | ~25,000 |
+| AMD Ryzen AI 9 HX 375 | ~2,842 | ~15,030 |
+| Intel Core Ultra 7 258V | ~2,724 | ~11,003 |
+
+The X2 silicon wins single-core broadly, trails the M4 Max in multi-core, and
+leads the current Intel and AMD laptop parts in both. On Linux the QN10 also
+posts a 7-zip rating near 133,500 MIPS, in high-end desktop 16-core range.
+
+### NPU and AI accelerator
+
+![NPU: INT8 TOPS versus RTX tensor](images/npu-tops.png)
+
+| Accelerator | INT8 TOPS (dense) | Power class |
+|-------------|------------------:|-------------|
+| QN10 Hexagon NPU | 80 | part of a ~15-50 W SoC |
+| RTX 3090 tensor | ~284 | 350 W |
+| RTX 5090 tensor | ~838 | 575 W |
+
+In INT8 the NPU is about 28 percent of a 3090 and 10 percent of a 5090, at a
+fraction of the power, on-die, and usable from Linux through this work.
+
+### GPU raw compute
+
+![GPU: FP32 TFLOPS](images/gpu-fp32.png)
+
+| GPU | FP32 TFLOPS |
+|-----|------------:|
+| Adreno X2-85 (QN10) | not published (N/A) |
+| RTX 3090 | 35.6 |
+| RTX 5090 | 104.8 |
+
+Qualcomm does not publish an FP32 figure for the Adreno X2 and sells it on
+performance per watt. It is an integrated mobile GPU, not a discrete-class
+part. It renders 4K cleanly and holds full clock with no throttling, but it
+is not in the same league as a discrete card for raw throughput.
+
+### GPU power class
+
+![GPU board power](images/gpu-power.png)
+
+| Part | Power |
+|------|------:|
+| QN10 whole SoC | ~15-50 W |
+| RTX 3090 | 350 W |
+| RTX 5090 | 575 W |
+
+The discrete GPU alone draws 7 to 11 times the entire QN10's power. The honest
+reading: the QN10 is a low-power ARM machine with a strong CPU and a capable
+integrated GPU and NPU, not a discrete-GPU workstation.
+
 ## What does not work, and why
 
 Each item below is a firmware or platform limitation, not a missing driver.
