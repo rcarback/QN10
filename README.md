@@ -19,6 +19,10 @@ Start with **[AGENTS.md](AGENTS.md)** for a quick start and the USB image
 deployment steps. See **[STATUS.md](STATUS.md)** for the full
 hardware-by-hardware state and the reasons behind each conclusion.
 
+See **[BENCHMARKS.md](BENCHMARKS.md)** for CPU, GPU, NPU, and
+virtualization benchmarks, and how the QN10 compares to other processors and
+to discrete GPUs.
+
 ## What works
 
 Verified on the running system, kernel qcom-next 7.4-rc1 with the patches in
