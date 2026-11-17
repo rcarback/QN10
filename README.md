@@ -49,10 +49,10 @@ Verified on the running system, kernel qcom-next 7.4-rc1 with the patches in
 ## How the QN10 compares
 
 Full methodology and the measured Linux numbers are in
-[BENCHMARKS.md](BENCHMARKS.md). The charts below use published reviewer and
-vendor figures for the comparison parts, cited there.
+[BENCHMARKS.md](BENCHMARKS.md). The charts use published reviewer and vendor
+figures for the comparison parts, cited there.
 
-### CPU
+### CPU performance
 
 ![CPU: Geekbench 6 single and multi-core](images/cpu-geekbench.png)
 
@@ -64,8 +64,24 @@ vendor figures for the comparison parts, cited there.
 | Intel Core Ultra 7 258V | ~2,724 | ~11,003 |
 
 The X2 silicon wins single-core broadly, trails the M4 Max in multi-core, and
-leads the current Intel and AMD laptop parts in both. On Linux the QN10 also
-posts a 7-zip rating near 133,500 MIPS, in high-end desktop 16-core range.
+leads the current Intel and AMD laptop parts in both. On Linux the QN10 posts
+a 7-zip rating near 133,500 MIPS, in high-end desktop 16-core range.
+
+### CPU efficiency (compute per watt)
+
+![CPU: multi-core score per watt](images/cpu-perf-per-watt.png)
+
+| CPU | GB6 multi | power at load | score / watt |
+|-----|----------:|--------------:|-------------:|
+| Apple M4 Max | ~25,000 | ~56 W | ~446 |
+| Intel Core Ultra 7 258V | ~11,003 | ~30 W | ~367 |
+| AMD Ryzen AI 9 HX 375 | ~15,030 | ~47 W | ~320 |
+| Snapdragon X2 Elite Extreme | ~23,400 | ~79 W | ~296 |
+
+The X2 posts top-tier absolute scores but draws the most power, so the Apple
+M4 Max leads efficiency here; the X2 is competitive with AMD and Intel. Power
+at load is approximate (the X2 figure is review-measured), not an iso-power
+test.
 
 ### NPU and AI accelerator
 
@@ -82,32 +98,38 @@ fraction of the power, on-die, and usable from Linux through this work.
 
 ### GPU raw compute
 
-![GPU: FP32 TFLOPS](images/gpu-fp32.png)
+![GPU: FP32 TFLOPS, parity class with flagships](images/gpu-fp32.png)
 
-| GPU | FP32 TFLOPS |
+| GPU | FP32 TFLOPS | Class |
+|-----|------------:|-------|
+| Adreno X2-85 (QN10) | ~6.0 (est.) | integrated |
+| AMD Radeon 890M | 5.94 | integrated |
+| Intel Arc 140V | 4.1 | integrated |
+| RTX 3050 | 6.77 | entry discrete |
+| RTX 3090 | 35.6 | flagship |
+| RTX 5090 | 104.8 | flagship |
+
+The Adreno X2-85 is a top-tier integrated GPU: on par with the Radeon 890M
+and an entry RTX 3050, ahead of the Arc 140V. The flagships are a different
+league. Qualcomm does not publish an FP32 figure; the ~6 is a community
+estimate (nanoreview).
+
+### GPU efficiency (compute per watt)
+
+![GPU: compute per watt](images/gpu-perf-per-watt.png)
+
+| GPU | FP32 / watt |
 |-----|------------:|
-| Adreno X2-85 (QN10) | not published (N/A) |
-| RTX 3090 | 35.6 |
-| RTX 5090 | 104.8 |
+| Adreno X2-85 (QN10) | ~0.40 |
+| AMD Radeon 890M | ~0.40 |
+| Intel Arc 140V | ~0.27 |
+| RTX 5090 | ~0.18 |
+| RTX 3090 | ~0.10 |
+| RTX 3050 | ~0.10 |
 
-Qualcomm does not publish an FP32 figure for the Adreno X2 and sells it on
-performance per watt. It is an integrated mobile GPU, not a discrete-class
-part. It renders 4K cleanly and holds full clock with no throttling, but it
-is not in the same league as a discrete card for raw throughput.
-
-### GPU power class
-
-![GPU board power](images/gpu-power.png)
-
-| Part | Power |
-|------|------:|
-| QN10 whole SoC | ~15-50 W |
-| RTX 3090 | 350 W |
-| RTX 5090 | 575 W |
-
-The discrete GPU alone draws 7 to 11 times the entire QN10's power. The honest
-reading: the QN10 is a low-power ARM machine with a strong CPU and a capable
-integrated GPU and NPU, not a discrete-GPU workstation.
+Integrated GPUs, including the Adreno, deliver the most compute per watt;
+among discrete cards the newer 5090 is the most efficient. Integrated power
+uses the 15 W configurable TDP basis; discrete uses board TDP.
 
 ## What does not work, and why
 
@@ -160,5 +182,5 @@ tools/
 - Scripts in `tools/`: GPL-2.0-or-later unless a file states otherwise.
 - Documentation (this file, `STATUS.md`, `AGENTS.md`): CC-BY-4.0.
 
-This is unofficial community work. It is not endorsed by ASUS or Qualcomm,
+This is unofficial hobbyist work. It is not endorsed by ASUS or Qualcomm,
 and it comes with no warranty.

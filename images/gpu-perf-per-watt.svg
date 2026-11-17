@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="460" viewBox="0 0 720 460" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+<rect width="720" height="460" fill="white"/>
+<text x="70" y="34" font-size="20" font-weight="700" fill="#1b1f27">GPU: compute per watt (FP32 TFLOPS / W)</text>
+<line x1="70" y1="364.0" x2="696" y2="364.0" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="368.0" font-size="12" text-anchor="end" fill="#9aa3b2">0.0</text>
+<line x1="70" y1="305.2" x2="696" y2="305.2" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="309.2" font-size="12" text-anchor="end" fill="#9aa3b2">0.1</text>
+<line x1="70" y1="246.4" x2="696" y2="246.4" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="250.4" font-size="12" text-anchor="end" fill="#9aa3b2">0.2</text>
+<line x1="70" y1="187.6" x2="696" y2="187.6" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="191.6" font-size="12" text-anchor="end" fill="#9aa3b2">0.3</text>
+<line x1="70" y1="128.8" x2="696" y2="128.8" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="132.8" font-size="12" text-anchor="end" fill="#9aa3b2">0.4</text>
+<line x1="70" y1="70.0" x2="696" y2="70.0" stroke="#e4e8ef" stroke-width="1"/>
+<text x="60" y="74.0" font-size="12" text-anchor="end" fill="#9aa3b2">0.5</text>
+<text x="18" y="217" font-size="12" fill="#9aa3b2" transform="rotate(-90 18 217)" text-anchor="middle">TFLOPS per watt</text>
+<rect x="93.5" y="119.0" width="57.4" height="245.0" rx="3" fill="#2f8f83"/>
+<text x="122.2" y="113.0" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">0.40</text>
+<text x="122.2" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">Adreno X2-85</text>
+<text x="122.2" y="396" font-size="12" text-anchor="middle" fill="#1b1f27">(QN10)</text>
+<rect x="197.8" y="119.0" width="57.4" height="245.0" rx="3" fill="#6b8fc4"/>
+<text x="226.5" y="113.0" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">0.40</text>
+<text x="226.5" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">Radeon</text>
+<text x="226.5" y="396" font-size="12" text-anchor="middle" fill="#1b1f27">890M</text>
+<rect x="302.1" y="198.6" width="57.4" height="165.4" rx="3" fill="#6b8fc4"/>
+<text x="330.8" y="192.6" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">0.27</text>
+<text x="330.8" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">Arc 140V</text>
+<rect x="406.5" y="252.5" width="57.4" height="111.5" rx="3" fill="#8a94a6"/>
+<text x="435.2" y="246.5" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">0.18</text>
+<text x="435.2" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">RTX 5090</text>
+<rect x="510.8" y="301.5" width="57.4" height="62.5" rx="3" fill="#8a94a6"/>
+<text x="539.5" y="295.5" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">0.10</text>
+<text x="539.5" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">RTX 3090</text>
+<rect x="615.1" y="304.6" width="57.4" height="59.4" rx="3" fill="#8a94a6"/>
+<text x="643.8" y="298.6" font-size="13" text-anchor="middle" fill="#1b1f27" font-weight="600">0.10</text>
+<text x="643.8" y="382" font-size="12" text-anchor="middle" fill="#1b1f27">RTX 3050</text>
+<line x1="70" y1="364" x2="696" y2="364" stroke="#9aa3b2" stroke-width="1.5"/>
+<text x="70" y="410" font-size="11" fill="#1b1f27">Integrated GPUs (incl. the Adreno) lead on compute per watt; the 5090 is the most efficient discrete card.</text>
+<text x="70" y="426" font-size="10.5" fill="#9aa3b2">Power: integrated at 15 W configurable TDP; discrete at board TDP. FP32 and sources in BENCHMARKS.md.</text>
+</svg>

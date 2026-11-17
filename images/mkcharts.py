@@ -10,6 +10,8 @@ os.makedirs(OUT, exist_ok=True)
 QN10 = "#2f8f83"      # teal, the QN10 bar
 REF = "#8a94a6"       # slate grey, reference bars
 REF2 = "#c2c9d6"      # lighter slate, second series
+INTG = "#6b8fc4"      # blue, other integrated GPUs
+DISC = "#8a94a6"      # slate, discrete GPUs
 TEXT = "#1b1f27"
 GRID = "#e4e8ef"
 AXIS = "#9aa3b2"
@@ -91,8 +93,11 @@ def chart(path, title, bars, ymax, ylabel, source, grouped=None, note=None):
             s.append(f'<text x="{x+bw/2:.1f}" y="{y-6:.1f}" font-size="13" '
                      f'text-anchor="middle" fill="{TEXT}" '
                      f'font-weight="600">{esc(vlabel)}</text>')
-            s.append(f'<text x="{x+bw/2:.1f}" y="{y0+18:.0f}" font-size="12" '
-                     f'text-anchor="middle" fill="{TEXT}">{esc(label)}</text>')
+            parts = str(label).split("\n")
+            for li, part in enumerate(parts):
+                s.append(f'<text x="{x+bw/2:.1f}" y="{y0+18+li*14:.0f}" '
+                         f'font-size="12" text-anchor="middle" '
+                         f'fill="{TEXT}">{esc(part)}</text>')
     s.append(f'<line x1="{ml}" y1="{y0}" x2="{ml+pw}" y2="{y0}" '
              f'stroke="{AXIS}" stroke-width="1.5"/>')
     yb = H - mb + 46
@@ -155,29 +160,52 @@ chart(
          "the RTX cards draw 350-575 W.",
 )
 
-# 3. GPU FP32 and board power (class comparison)
+# 3. GPU FP32, parity class plus flagships for scale
 chart(
     "gpu-fp32.svg",
-    "GPU: FP32 TFLOPS (raw compute)",
-    [("Adreno (QN10)", 3, QN10, "N/A"),
-     ("RTX 3090", 35.6, REF),
-     ("RTX 5090", 104.8, REF)],
+    "GPU: FP32 TFLOPS (parity class, with flagships for scale)",
+    [("Adreno X2-85\n(QN10)", 6.0, QN10, "~6.0"),
+     ("Radeon\n890M", 5.94, INTG),
+     ("Arc 140V", 4.1, INTG),
+     ("RTX 3050\n(discrete)", 6.77, DISC),
+     ("RTX 3090", 35.6, DISC),
+     ("RTX 5090", 104.8, DISC)],
     115, "TFLOPS (FP32)",
-    "RTX: club386. Adreno X2-85 FP32 is not published by Qualcomm (N/A); it is "
-    "an integrated mobile GPU, a different class, not a near-zero compute part.",
-    note="Different product classes: an integrated mobile GPU versus 350-575 W "
-         "discrete cards. See board power below.",
+    "FP32 sources: nanoreview, cpu-monkey, TechPowerUp, club386. Details in "
+    "BENCHMARKS.md.",
+    note="On par with the Radeon 890M and an entry RTX 3050; the flagships "
+         "are a different league.",
 )
 
 chart(
-    "gpu-power.svg",
-    "GPU board power (watts)",
-    [("QN10 SoC", 50, QN10),
-     ("RTX 3090", 350, REF),
-     ("RTX 5090", 575, REF)],
-    650, "watts (TDP / SoC)",
-    "RTX TDP: club386. QN10 figure is the whole system-on-chip envelope, "
-    "not the GPU alone.",
-    note="The discrete GPU alone draws 7-11x the entire QN10's power.",
+    "gpu-perf-per-watt.svg",
+    "GPU: compute per watt (FP32 TFLOPS / W)",
+    [("Adreno X2-85\n(QN10)", 0.40, QN10, "0.40"),
+     ("Radeon\n890M", 0.40, INTG, "0.40"),
+     ("Arc 140V", 0.27, INTG),
+     ("RTX 5090", 0.182, DISC, "0.18"),
+     ("RTX 3090", 0.102, DISC, "0.10"),
+     ("RTX 3050", 0.097, DISC, "0.10")],
+    0.48, "TFLOPS per watt",
+    "Power: integrated at 15 W configurable TDP; discrete at board TDP. "
+    "FP32 and sources in BENCHMARKS.md.",
+    note="Integrated GPUs (incl. the Adreno) lead on compute per watt; the "
+         "5090 is the most efficient discrete card.",
 )
+
+# 6. CPU compute per watt (Geekbench 6 multi / power at the multi-core load)
+chart(
+    "cpu-perf-per-watt.svg",
+    "CPU: multi-core score per watt (at load)",
+    [("X2 Elite\nExtreme", 296, QN10, "296"),
+     ("Apple\nM4 Max", 446, DISC),
+     ("Ryzen AI 9\n375", 320, DISC),
+     ("Core Ultra\n258V", 367, DISC)],
+    520, "Geekbench 6 multi / watt",
+    "Power at the multi-core load (approx): X2 ~79 W (notebookcheck "
+    "measured); M4 Max ~56 W, Ryzen ~47 W, 258V ~30 W (representative).",
+    note="The X2 posts top-tier scores but draws the most power, so the M4 "
+         "Max leads efficiency here. Approximate, not an iso-power test.",
+)
+
 print("done")

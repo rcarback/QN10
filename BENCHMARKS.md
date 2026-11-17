@@ -72,26 +72,29 @@ The GPU runs on the open `turnip` Vulkan driver and `freedreno` OpenGL
 driver. Under a sustained heavy run it holds its full clock with no thermal
 throttling.
 
-## GPU versus desktop discrete cards
+## GPU versus other GPUs
 
-Set expectations correctly: the Adreno X2-85 is an **integrated mobile GPU**
-inside a roughly 15 to 50 W system-on-chip. A GeForce RTX 3090 or RTX 5090 is
-a 350 to 575 W discrete card. They are different product classes. Qualcomm
-does not publish an FP32 TFLOPS figure for the Adreno X2 and emphasizes
-performance per watt instead, so a precise GPU-to-GPU FP32 ratio is not
-available. For raw graphics and compute throughput the discrete cards are far
-ahead; the Adreno's argument is power and integration, not peak throughput.
+The Adreno X2-85 is an integrated mobile GPU inside a roughly 15 to 50 W
+system-on-chip. The fair peers are other top integrated GPUs and entry
+discrete cards, not a 350 to 575 W flagship.
 
-| GPU | FP32 | Memory bandwidth | Board power |
-|-----|------|------------------|-------------|
-| Adreno X2-85 (QN10) | not published | shared ~81 GB/s measured (152 GB/s SoC spec) | part of a ~15-50 W SoC |
-| RTX 3090 | 35.6 TFLOPS | 936 GB/s | 350 W |
-| RTX 5090 | 104.8 TFLOPS | 1,792 GB/s | 575 W |
+| GPU | FP32 TFLOPS | Class | Power basis |
+|-----|------------:|-------|-------------|
+| Adreno X2-85 (QN10) | ~6.0 (est., nanoreview) | integrated | part of ~15-50 W SoC |
+| AMD Radeon 890M | 5.94 | integrated | 15 W cTDP |
+| Intel Arc 140V | 4.1 | integrated | 15 W cTDP |
+| RTX 3050 | 6.77 | entry discrete | 70 W |
+| RTX 3090 | 35.6 | flagship | 350 W |
+| RTX 5090 | 104.8 | flagship | 575 W |
 
-RTX figures: [club386](https://www.club386.com/nvidia-geforce-rtx-5090-vs-rtx-3090/),
-[bestgpusforai](https://www.bestgpusforai.com/gpu-comparison/5090-vs-3090).
-Treat the glmark2 score above as a health and class check, not as a number
-comparable to desktop 3DMark results.
+The Adreno X2-85 is on par with the Radeon 890M and an entry RTX 3050, ahead
+of the Arc 140V. Qualcomm does not publish an FP32 figure; the ~6 TFLOPS is a
+community estimate. On compute per watt (FP32 divided by the power basis
+above) the integrated GPUs lead at about 0.27 to 0.40 TFLOPS/W, the 5090 is
+the most efficient discrete card at about 0.18, and the 3090 and 3050 are near
+0.10. The flagships still win raw throughput by a wide margin; the Adreno's
+argument is efficiency and integration. Sources: nanoreview, cpu-monkey,
+TechPowerUp, club386.
 
 ## NPU versus desktop tensor throughput
 
