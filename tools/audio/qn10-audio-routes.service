@@ -1,0 +1,11 @@
+[Unit]
+Description=QN10: set the headset microphone capture route
+After=alsa-restore.service sound.target
+Wants=alsa-restore.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/qn10-audio-routes
+
+[Install]
+WantedBy=sound.target

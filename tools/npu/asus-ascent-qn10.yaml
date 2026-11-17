@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: MIT
+# QN10: Hexagon DSP libraries from the QN10's own Windows driver package
+# (npu/stage-dsp-libs.sh), which match its CDSP/ADSP firmware. Install as
+# /usr/share/hexagon-dsp/conf.d/asus-ascent-qn10.yaml.
+machines:
+  ASUS Ascent QN10:
+    DSP_LIBRARY_PATH: glymur/ASUSTeK/QN10/dsp
